@@ -1,0 +1,42 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+int main() 
+{
+	// your code goes here
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,m,k;
+        cin>>n>>m>>k;
+        int i=k;
+        bool ans=false;
+        while(m)
+        {
+            m--;
+            i++;
+            if(i>n)
+            {
+                ans=true;
+                i=1;
+            }
+        }
+        if(ans==true)
+        {
+            if(i==1)
+            {
+                cout<<n<<endl;
+            }else 
+            {
+                cout<<i-1<<endl;
+            }
+        }else 
+        {
+            cout<<i-1<<endl;
+        }
+    }
+	return 0;
+}
+
+
