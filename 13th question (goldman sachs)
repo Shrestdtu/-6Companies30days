@@ -1,0 +1,86 @@
+// { Driver Code Starts
+// Initial Template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+// User function Template for C++
+
+class Solution{
+public:
+    string ans(string s,int &i,int n)
+    {
+        string result="";
+        int c=0;
+        for(;i<n;i++)
+        {
+            int p=s[i]-'0';
+            // cout<<p<<endl;
+            if(p>=0 && p<=9)
+            {
+                c=c*10+(s[i]-'0');
+            }else if(s[i]=='[')
+            {
+                i++;
+                string pass=ans(s,i,n);
+                while(c--)
+                {
+                    result+=pass;
+                }
+                c=0;
+            }else if(s[i]==']')
+            {
+                return result;
+            }else 
+            {
+                result+=s[i];
+            }
+        }
+        return result;
+    }
+    string decodedString(string s){
+        // code here
+        // int c=s[0]-'0';
+        // string a="";
+        // for(int i=s.size()-1;i>0;i--)
+        // {
+        //     if(s[i]==']')
+        //     {
+        //         continue;
+        //     }else if(s[i]=='[')
+        //     {
+        //         int ch=s[i-1]-'0';
+        //         string chh=a;
+        //         while(ch!=1)
+        //         {
+        //             a+=chh;
+        //             ch--;
+        //         }
+        //         i--;
+        //     }else 
+        //     {
+        //          a+=s[i];
+        //     }
+        // }
+        // reverse(a.begin(),a.end());
+        int n=s.size();
+        int i=0;
+        return ans(s,i,n);
+    }
+};
+
+// { Driver Code Starts.
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        string s;
+        cin>>s;
+        
+        Solution ob;
+        cout<<ob.decodedString(s)<<"\n";
+    }
+    return 0;
+}  // } Driver Code Ends
