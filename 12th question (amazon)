@@ -1,0 +1,49 @@
+// { Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+
+
+class Solution{
+    public:
+    string colName (long long int n)
+    {
+        // your code here
+        string ans="";
+        long long int r=n;
+        while(r>26)
+        {
+            long long int s=r%26;
+            r=(r-1)/26;
+            long long int c=s;
+            char ch=s-1+'A';
+            if(ch=='@')
+            {
+                ch='Z';
+            }
+            ans=ch+ans;
+        }
+        long long int c=r;
+        char ch=c-1+'A';
+        if(c==1)
+        {
+            ch='A';
+        }
+        ans=ch+ans;
+        return ans;
+    }
+};
+
+// { Driver Code Starts.
+int main()
+{
+    int t; cin >> t;
+    while (t--)
+	{
+		long long int n; cin >> n;
+		Solution ob;
+		cout << ob.colName (n) << '\n';
+	}
+}
+  // } Driver Code Ends
