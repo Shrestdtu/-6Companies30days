@@ -1,0 +1,69 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+    long long t;
+    cin>>t;
+    while(t--)
+    {
+        long long n;
+        cin>>n;
+        if(n<=8)
+        {
+            if(n==2)
+            {
+                cout<<"YES"<<endl;
+            }else
+            {
+                cout<<"NO"<<endl;
+            }
+        }else if(n&1)
+        {
+            long long even;
+            for(long long i=2;i*i*i<n;i++)
+            {
+                even=i*i*i;
+            }
+            long long ch=n-even;
+            long long odd;
+            for(long long i=1;i*i*i<=ch;i++)
+            {
+                odd=i*i*i;
+            }
+            if(ch==odd)
+            {
+                cout<<"YES"<<endl;
+            }else
+            {
+                cout<<"NO"<<endl;
+            }
+        }else
+        {
+            long long even;
+            for(long long i=2;i*i*i<=n/2;i+=2)
+            {
+                even=i*i*i;
+            }
+            if(n/2==even)
+            {
+                cout<<"YES"<<endl;
+                break;
+            }
+            long long odd;
+            for(long long i=1;i*i*i<=n;i+=2)
+            {
+                odd=i*i*i;
+            }
+            cout<<odd;
+            if(n/2==odd)
+            {
+                cout<<"YES"<<endl;
+                break;
+            }
+        }
+    }
+	return 0;
+}
+
