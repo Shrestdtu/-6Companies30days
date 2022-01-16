@@ -1,0 +1,59 @@
+// { Driver Code Starts
+//Initial template for C++
+
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+//User function template for C++
+
+class Solution{
+  public:
+    /*You are required to complete this method */
+    int atoi(string str) {
+        bool ans=false;
+        int x=0;
+        if(str[x]=='-')
+        {
+            x=1;
+            ans=true;    
+        }
+        for(x;x<str.size();x++)
+        {
+            if(str[x]>'9' || str[x]<'0')
+            {
+                return -1;
+            }
+        }
+        int a=0;
+        int i=0;
+        if(ans==true)
+        {
+            i=1;
+        }
+        for(i;i<str.size();i++)
+        {
+            int f=str[i]-'0';
+            a=a*10+f;
+        }
+        if(ans)
+        {
+            return -a;
+        }
+        return a;
+    }
+};
+
+// { Driver Code Starts.
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		string s;
+		cin>>s;
+		Solution ob;
+		cout<<ob.atoi(s)<<endl;
+	}
+}  // } Driver Code Ends
