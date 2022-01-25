@@ -1,0 +1,48 @@
+class Solution {
+public:
+    bool ch(vector<int>& nums, int m,int mid)
+    {
+        int d=1;
+        int s=0;
+        for(auto i:nums)
+        {
+            s+=i;
+            if(s>mid)
+            {
+                d++;
+                s=i;
+            }
+        }
+        return d<=m;
+    }
+    int splitArray(vector<int>& nums, int m) 
+    {
+        int maxi=0;
+        int sum=0;
+        for(int i:nums)
+        {
+            sum+=i;
+            maxi=max(maxi,i);
+        }
+        if(m==nums.size())
+        {
+            return maxi;
+        }
+        int l=maxi;
+        int h=sum;
+        int ans=0;
+        while(l<=h)
+        {
+            int mid=l+(h-l)/2;
+            if(ch(nums,m,mid))
+            {
+                ans=mid;
+                h=mid-1;
+            }else
+            {
+                l=mid+1;
+            }     
+        }
+        return ans;
+    }
+};
