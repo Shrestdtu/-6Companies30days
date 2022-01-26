@@ -1,0 +1,27 @@
+class Solution {
+public:
+    struct cmp
+    {
+        bool operator()(const string &a,const string &b)
+        {
+            if(a.size()==b.size())
+            {
+                return a>b;
+            }
+            return a.size()>b.size();
+        }
+    };
+    string kthLargestNumber(vector<string>& nums, int k) 
+    {
+        priority_queue<string,vector<string>,cmp>maxh;
+        for(auto it:nums)
+        {
+            maxh.push(it);
+            while(maxh.size()>k)
+            {
+                maxh.pop();
+            }
+        }
+        return maxh.top();
+    }
+};
