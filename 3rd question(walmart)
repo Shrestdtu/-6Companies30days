@@ -1,0 +1,57 @@
+class Solution {
+public:
+    bool winnerOfGame(string colors) 
+    {
+        int a=0;
+        int b=0;
+        int n=colors.size();
+        for(int i=0;i<colors.size();i++)
+        {
+            int c=0;
+            if(colors[i]=='A')
+            {
+                while(i<n && colors[i]=='A')
+                {
+                    i++;
+                    c++;
+                }
+                if(c>=3)
+                {
+                    a+=(c-2);
+                }
+                i--;
+            }else
+            {
+                c=0;
+                while(i<n && colors[i]=='B')
+                {
+                    c++;
+                    i++;
+                }
+                if(c>=3)
+                {
+                    b+=(c-2);
+                }
+                i--;
+            } 
+        }
+        // for(int i=0;i<colors.size();i++)
+        // {
+        //     int c=0;
+        //     if(colors[i]=='B')
+        //     {
+        //         while(i<n && colors[i]=='B')
+        //         {
+        //             c++;
+        //             i++;
+        //         }
+        //         if(c>=3)
+        //         {
+        //             b+=(c-2);
+        //         }
+        //     }
+        // }
+        // cout<<a<<" "<<b;
+        return a>b;
+    }
+};
