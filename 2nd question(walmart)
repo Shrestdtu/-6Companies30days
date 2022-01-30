@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int dp[501][501];
+    bool solve(vector<int>&piles,int i,int j,int sum1,int sum2)
+    {
+        if(i>=j)
+        {
+            return sum1>sum2;
+        }
+        if(dp[i][j]!=-1)
+        {
+            return dp[i][j];
+        }
+        bool a,b,c,d;
+        a=solve(piles,i+2,j,sum1+piles[i],sum2+piles[i+1]);
+        a=solve(piles,i+1,j-1,sum1+piles[i],sum2+piles[j]);
+        a=solve(piles,i+1,j-1,sum1+piles[j],sum2+piles[i]);
+        a=solve(piles,i,j-2,sum1+piles[j],sum2+piles[j-1]);
+        return dp[i][j]=a || b || c || d;
+    }
+    bool stoneGame(vector<int>& piles) 
+    {
+        memset(dp,-1,sizeof(dp));
+        return solve(piles,0,piles.size()-1,0,0);
+    }
+};
